@@ -27,11 +27,25 @@ const steps = [
 
 const isValid = (key: string, value: string) => {
   if (!value) return false;
-  if (key === "email") return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  if (key === "phone") return /^\+?1?\d{10}$/.test(value);
-  if (key === "zipCode") return /^\d{5}$/.test(value);
+
+  if (key === "email") {
+    const emailRegex = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(value);
+  }
+
+  if (key === "phone") {
+    // Permite +1 opcional, espacios, guiones o paréntesis, pero asegura 10 dígitos reales
+    const cleaned = value.replace(/\D/g, ""); // quita todo excepto dígitos
+    return cleaned.length === 10;
+  }
+
+  if (key === "zipCode") {
+    return /^\d{5}(-\d{4})?$/.test(value); // permite 5 o 9 dígitos ZIP
+  }
+
   return true;
 };
+
 
 const getAirtableConfig = () => {
   const baseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
@@ -180,7 +194,7 @@ const Apply = () => {
       }
       try {
         localStorage.setItem("loanApplicationData", JSON.stringify(finalData));
-        navigate("/loading-results");
+        navigate("/loading-results", { state: { fromForm: true } });
       } catch (e) {} finally {
         setIsSubmitting(false);
       }
@@ -231,38 +245,75 @@ const Apply = () => {
                 </div>
               )}
               {step.input && (
-                <div>
-                  <Label htmlFor={step.key} className="block mb-1 text-sm text-gray-700">{step.title}</Label>
-                  <Input
-                    id={step.key}
-                    type={step.key === "email" ? "email" : step.key === "phone" ? "tel" : "text"}
-                    placeholder={
-                      step.key === "phone"
-                        ? "+1 (555) 123-4567"
-                        : step.key === "zipCode"
-                        ? "ZIP code (USA only)"
-                        : ""
-                    }
-                    value={value}
-                    onChange={handleInputChange}
-                    className="mt-1"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">
-                    {step.key === "email"
-                      ? "Press Enter to continue and accept the Terms of Use and Privacy Policy."
-                      : step.key === "zipCode"
-                      ? "Enter a valid 5-digit US ZIP code."
+              <div>
+                <Label htmlFor={step.key} className="block mb-1 text-sm text-gray-700">{step.title}</Label>
+                <Input
+                  id={step.key}
+                  type={
+                    step.key === "email"
+                      ? "email"
                       : step.key === "phone"
-                      ? "Enter a valid 10-digit US phone number."
-                      : "Press Enter to continue."}
-                  </p>
+                      ? "tel"
+                      : "text"
+                  }
+                  placeholder={
+                    step.key === "phone"
+                      ? "+1 (555) 123-4567"
+                      : step.key === "zipCode"
+                      ? "ZIP code (USA only)"
+                      : step.key === "email"
+                      ? "example@domain.com"
+                      : step.key === "annualRevenue"
+                      ? "e.g. 150,000"
+                      : step.key === "firstName"
+                      ? "John"
+                      : step.key === "lastName"
+                      ? "Doe"
+                      : step.key === "businessName"
+                      ? "Acme Corp"
+                      : ""
+                  }
+                  maxLength={
+                    step.key === "phone" ? 18 :
+                    step.key === "zipCode" ? 10 :
+                    step.key === "email" ? 50 :
+                    step.key === "firstName" || step.key === "lastName" ? 30 :
+                    100
+                  }
+                  value={value}
+                  onChange={handleInputChange}
+                  className="mt-1"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  {step.key === "email"
+                    ? "Must be a valid email like example@domain.com."
+                    : step.key === "zipCode"
+                    ? "US ZIP code must be 5 digits (optionally 4 more)."
+                    : step.key === "phone"
+                    ? "US phone number, 10 digits only. No fake/test numbers."
+                    : step.key === "annualRevenue"
+                    ? "Enter your yearly revenue in USD. Use only numbers."
+                    : step.key === "firstName" || step.key === "lastName"
+                    ? "Only letters, spaces and hyphens allowed."
+                    : step.key === "businessName"
+                    ? "Enter the full name of your company."
+                    : "Please enter a valid value to proceed."}
+                </p>
+                <div className="flex justify-end mt-4">
+                  <Button
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium"
+                    onClick={handleNext}
+                    disabled={!isValid(step.key, value)}
+                  >
+                    Next <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
                 </div>
-              )}
+              </div>
+            )}
             </CardContent>
           </Card>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

@@ -34,9 +34,9 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-gray-900 mb-4">Legal</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="#" className="hover:text-blue-900">Terms of Use</a></li>
-              <li><a href="#" className="hover:text-blue-900">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-blue-900">Contact</a></li>
+              <li><a href="/terms" className="hover:text-blue-900">Terms of Use</a></li>
+              <li><a href="/privacy-policy" className="hover:text-blue-900">Privacy Policy</a></li>
+              <li><a href="/blog" className="hover:text-blue-900">Blog</a></li>
             </ul>
           </div>
           
