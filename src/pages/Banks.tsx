@@ -27,64 +27,55 @@ const Index = () => {
       <Header />
 
       <section
-  className="relative bg-cover bg-center bg-no-repeat text-white py-20"
-  style={{
-    backgroundImage: "url('/images/small-business.jpg')",
-  }}
+  className="relative bg-cover bg-center bg-no-repeat text-white py-14 sm:py-16 md:py-20"
+  style={{ backgroundImage: "url('/images/small-business.jpg')" }}
 >
   {/* Overlay con gradiente */}
-  <div className="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-blue-600/40 z-0" />
+  <div className="absolute inset-0 bg-gradient-to-r from-blue-900/60 to-blue-600/40 z-0" />
 
-  <div className="relative z-10 max-w-6xl mx-auto px-4">
-    <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
-      
-      {/* Columna izquierda - texto */}
-      <div className="md:w-1/2 text-center md:text-left">
-        <p className="mb-4 inline-block bg-green-100 text-green-900 px-4 py-1 text-sm rounded-full font-semibold">
-          Over $10M Funded – Trusted by 5,000+ Business Owners
-        </p>
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+  <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-6 md:px-4">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12">
+
+      {/* Texto principal */}
+      <div className="w-full md:w-1/2 text-center md:text-left">
+      <p className="mb-4 inline-block bg-green-100 text-green-900 px-5 py-2 text-xs sm:text-sm rounded-full font-medium tracking-wide shadow-sm border border-green-200">
+        Over $10M Funded – Trusted by 5,000+ Business Owners
+      </p>
+        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight mb-4">
           Get the Business Funding You Deserve — Even With Bad Credit
         </h1>
-        <p className="text-lg text-blue-100 mb-6">
+        <p className="text-sm sm:text-base text-blue-100 mb-6">
           Compare pre-qualified offers from top lenders with zero impact on your credit score.
         </p>
 
-        {/* Logos justo debajo del texto */}
-        <div className="relative overflow-hidden mb-8 h-12 bg-transparent">
-          <div className="flex animate-scroll whitespace-nowrap gap-12 items-center">
+        {/* Logos */}
+        <div className="relative overflow-hidden mb-6 h-14 sm:h-16">
+          <div className="flex animate-scroll whitespace-nowrap gap-10 sm:gap-14 items-center">
             {[
-              { src: "/images/forbes-white.png", alt: "Forbes" },
-              { src: "/images/business-insider-white.png", alt: "Business Insider" },
-              { src: "/images/yahoo-finance-white.png", alt: "Yahoo Finance" },
-              { src: "/images/entrepreneur-white.png", alt: "Entrepreneur" },
+              "/images/forbes-white.png",
+              "/images/business-insider-white.png",
+              "/images/yahoo-finance-white.png",
+              "/images/entrepreneur-white.png",
             ]
               .concat([
-                { src: "/images/forbes-white.png", alt: "Forbes" },
-                { src: "/images/business-insider-white.png", alt: "Business Insider" },
-                { src: "/images/yahoo-finance-white.png", alt: "Yahoo Finance" },
-                { src: "/images/entrepreneur-white.png", alt: "Entrepreneur" },
+                "/images/forbes-white.png",
+                "/images/business-insider-white.png",
+                "/images/yahoo-finance-white.png",
+                "/images/entrepreneur-white.png",
               ])
-              .map((logo, i) => (
+              .map((src, i) => (
                 <div
                   key={i}
-                  className="w-32 h-10 flex items-center justify-center flex-shrink-0"
+                  className="w-28 sm:w-32 h-10 sm:h-12 flex items-center justify-center flex-shrink-0"
                 >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className={`object-contain ${
-                      logo.alt === "Business Insider"
-                        ? "h-10 w-[140px]"
-                        : "h-8 w-[100px]"
-                    }`}
-                  />
+                  <img src={src} alt="Media Logo" className="h-full object-contain" />
                 </div>
               ))}
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-6 text-blue-100 text-sm justify-center md:justify-start">
+        {/* Badges */}
+        <div className="flex flex-wrap gap-4 text-blue-100 text-sm justify-center md:justify-start">
           <span className="flex items-center space-x-1">
             <Shield className="h-4 w-4" />
             <span>256-bit SSL</span>
@@ -96,13 +87,14 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Columna derecha - formulario */}
-      <div className="md:w-1/2 bg-white p-6 rounded-xl shadow-lg">
+      {/* Formulario */}
+      <div className="w-full md:w-1/2 mt-10 md:mt-0 bg-white p-5 sm:p-6 rounded-xl shadow-lg">
         <MultiStepForm />
       </div>
     </div>
   </div>
 </section>
+
 
 
       {/* Lender Cards Grid */}
@@ -284,7 +276,7 @@ const Index = () => {
       {/* Asset-Based Loans */}
       <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
         <img
-          src="/images/business-asset.jpg"
+          src="/images/business.jpg"
           alt="Asset-Based Loan"
           className="rounded-lg mb-4 w-full h-36 object-cover"
         />
