@@ -38,46 +38,47 @@ const LenderCard = ({
       : parseFloat(lender.customerScore) || 0;
 
   return (
-    <Card className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col justify-between h-full">
+    <Card
+      className={`relative border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-all p-6 flex flex-col justify-between h-full bg-white ${
+        lender.featured ? "ring-2 ring-blue-500" : ""
+      }`}
+    >
       {/* Header */}
-      <div className="flex items-center space-x-3 mb-5">
+      <div className="flex items-center space-x-4 mb-6">
         {lender.logo ? (
           <img
             src={lender.logo}
             alt={lender.name}
-            className="w-12 h-12 object-contain rounded bg-white border p-1"
+            className="w-14 h-14 object-contain rounded bg-white border p-1 shadow-sm"
           />
         ) : (
-          <div className="w-12 h-12 bg-blue-600 rounded flex items-center justify-center">
-            <span className="text-lg font-semibold text-white">
+          <div className="w-14 h-14 bg-blue-600 rounded flex items-center justify-center shadow-sm">
+            <span className="text-xl font-semibold text-white">
               {lender.name.charAt(0)}
             </span>
           </div>
         )}
         <div>
-          <h3 className="text-lg font-semibold text-gray-900">
+          <h3 className="text-lg font-bold text-gray-900 mb-1">
             {lender.name}
           </h3>
-          <div className="flex items-center gap-0.5 mt-1">
+          <div className="flex items-center gap-1">
             {[1, 2, 3, 4, 5].map((i) => {
               const filled = score >= i;
               const half = score >= i - 0.5 && score < i;
-
               return (
-                <div key={i} className="relative w-3.5 h-3.5">
-                  <Star className="w-3.5 h-3.5 text-gray-300 fill-gray-300" />
+                <div key={i} className="relative w-4 h-4">
+                  <Star className="w-4 h-4 text-gray-300 fill-gray-300" />
                   {(filled || half) && (
                     <Star
-                      className="absolute top-0 left-0 w-3.5 h-3.5 text-yellow-500 fill-yellow-500"
-                      style={{
-                        clipPath: half ? "inset(0 50% 0 0)" : "none",
-                      }}
+                      className="absolute top-0 left-0 w-4 h-4 text-yellow-500 fill-yellow-500"
+                      style={{ clipPath: half ? "inset(0 50% 0 0)" : "none" }}
                     />
                   )}
                 </div>
               );
             })}
-            <span className="text-sm text-gray-600 ml-1.5">
+            <span className="text-sm text-gray-600 ml-1">
               {score.toFixed(1)}
             </span>
           </div>
@@ -85,34 +86,41 @@ const LenderCard = ({
       </div>
 
       {/* Stats */}
-      <div className="space-y-3 mb-6">
-        <div className="flex justify-between items-center py-2 border-b border-gray-100">
-          <span className="text-sm text-gray-600">Interest rate</span>
-          <span className="font-semibold text-gray-900">{lender.interestRate}</span>
+      <div className="grid grid-cols-1 gap-3 text-sm text-gray-700 mb-6">
+        <div className="flex justify-between">
+          <span>Interest Rate</span>
+          <span className="font-medium text-gray-900">{lender.interestRate}</span>
         </div>
-        <div className="flex justify-between items-center py-2 border-b border-gray-100">
-          <span className="text-sm text-gray-600">Max loan amount</span>
-          <span className="font-semibold text-gray-900">{lender.maxLoanAmount}</span>
+        <div className="flex justify-between">
+          <span>Max Loan Amount</span>
+          <span className="font-medium text-gray-900">{lender.maxLoanAmount}</span>
         </div>
-        <div className="flex justify-between items-center py-2 border-b border-gray-100">
-          <span className="text-sm text-gray-600">Fastest funding</span>
-          <span className="font-semibold text-green-600">{lender.fastestFunding}</span>
+        <div className="flex justify-between">
+          <span>Fastest Funding</span>
+          <span className="font-medium text-green-600">{lender.fastestFunding}</span>
         </div>
-        <div className="flex justify-between items-center py-2">
-          <span className="text-sm text-gray-600">Term length</span>
-          <span className="font-semibold text-gray-900">{lender.termLength}</span>
+        <div className="flex justify-between">
+          <span>Term Length</span>
+          <span className="font-medium text-gray-900">{lender.termLength}</span>
         </div>
       </div>
 
       {/* CTA */}
       {showApplyButton && (
-        <div className="space-y-2">
+        <div className="mt-auto">
           <Button
             onClick={handleApply}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg py-2.5"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg py-2.5 text-sm"
           >
             {ctaText}
           </Button>
+        </div>
+      )}
+
+      {/* Featured Tag */}
+      {lender.featured && (
+        <div className="absolute top-3 right-3 bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded-full font-medium">
+          Featured
         </div>
       )}
     </Card>

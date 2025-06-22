@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getLenders } from "@/lib/getLenders";
-
+import MultiStepForm from "@/components/MultiStepForm";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, CheckCircle, Clock, Users, DollarSign, FileText, TrendingUp, AlertTriangle, Star, Quote } from "lucide-react";
@@ -26,62 +26,84 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-20">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Compare Trusted Lenders for Bad Credit Business Loans
-          </h1>
-          <p className="text-lg text-blue-100 mb-8">
-            Get funding even with poor credit. Compare offers from top lenders with no credit score impact.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              onClick={handleGetStarted}
-              size="lg"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-lg"
-            >
-              Get Started - It's Free
-            </Button>
-            <div className="flex items-center space-x-4 text-blue-100 text-sm">
-              <span className="flex items-center space-x-1">
-                <Shield className="h-4 w-4" />
-                <span>100% Secure</span>
-              </span>
-              <span className="flex items-center space-x-1">
-                <CheckCircle className="h-4 w-4" />
-                <span>No Credit Impact</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section
+  className="relative bg-cover bg-center bg-no-repeat text-white py-20"
+  style={{
+    backgroundImage: "url('/images/small-business.jpg')",
+  }}
+>
+  {/* Overlay con gradiente */}
+  <div className="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-blue-600/40 z-0" />
 
-      {/* Trust Indicators */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div className="flex flex-col items-center">
-            <Clock className="h-8 w-8 text-green-500 mb-2" />
-            <span className="text-sm font-semibold text-gray-900">Fast Approval</span>
-            <span className="text-xs text-gray-600">Within 24 hours</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <Shield className="h-8 w-8 text-blue-500 mb-2" />
-            <span className="text-sm font-semibold text-gray-900">Secure Process</span>
-            <span className="text-xs text-gray-600">256-bit SSL encryption</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <Users className="h-8 w-8 text-purple-500 mb-2" />
-            <span className="text-sm font-semibold text-gray-900">Trusted Partners</span>
-            <span className="text-xs text-gray-600">Verified lenders</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <CheckCircle className="h-8 w-8 text-green-500 mb-2" />
-            <span className="text-sm font-semibold text-gray-900">No Commitment</span>
-            <span className="text-xs text-gray-600">Compare freely</span>
+  <div className="relative z-10 max-w-6xl mx-auto px-4">
+    <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
+      
+      {/* Columna izquierda - texto */}
+      <div className="md:w-1/2 text-center md:text-left">
+        <p className="mb-4 inline-block bg-green-100 text-green-900 px-4 py-1 text-sm rounded-full font-semibold">
+          Over $10M Funded – Trusted by 5,000+ Business Owners
+        </p>
+        <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+          Get the Business Funding You Deserve — Even With Bad Credit
+        </h1>
+        <p className="text-lg text-blue-100 mb-6">
+          Compare pre-qualified offers from top lenders with zero impact on your credit score.
+        </p>
+
+        {/* Logos justo debajo del texto */}
+        <div className="relative overflow-hidden mb-8 h-12 bg-transparent">
+          <div className="flex animate-scroll whitespace-nowrap gap-12 items-center">
+            {[
+              { src: "/images/forbes-white.png", alt: "Forbes" },
+              { src: "/images/business-insider-white.png", alt: "Business Insider" },
+              { src: "/images/yahoo-finance-white.png", alt: "Yahoo Finance" },
+              { src: "/images/entrepreneur-white.png", alt: "Entrepreneur" },
+            ]
+              .concat([
+                { src: "/images/forbes-white.png", alt: "Forbes" },
+                { src: "/images/business-insider-white.png", alt: "Business Insider" },
+                { src: "/images/yahoo-finance-white.png", alt: "Yahoo Finance" },
+                { src: "/images/entrepreneur-white.png", alt: "Entrepreneur" },
+              ])
+              .map((logo, i) => (
+                <div
+                  key={i}
+                  className="w-32 h-10 flex items-center justify-center flex-shrink-0"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className={`object-contain ${
+                      logo.alt === "Business Insider"
+                        ? "h-10 w-[140px]"
+                        : "h-8 w-[100px]"
+                    }`}
+                  />
+                </div>
+              ))}
           </div>
         </div>
-      </section>
+
+        <div className="flex flex-wrap gap-6 text-blue-100 text-sm justify-center md:justify-start">
+          <span className="flex items-center space-x-1">
+            <Shield className="h-4 w-4" />
+            <span>256-bit SSL</span>
+          </span>
+          <span className="flex items-center space-x-1">
+            <CheckCircle className="h-4 w-4" />
+            <span>Soft Credit Check</span>
+          </span>
+        </div>
+      </div>
+
+      {/* Columna derecha - formulario */}
+      <div className="md:w-1/2 bg-white p-6 rounded-xl shadow-lg">
+        <MultiStepForm />
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Lender Cards Grid */}
       <section className="py-20">
@@ -107,40 +129,60 @@ const Index = () => {
       </section>
 
       {/* What is a Bad Credit Business Loan */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              What is a Bad Credit Business Loan?
-            </h2>
-          </div>
-          <Card className="border-0 shadow-lg">
-            <CardContent className="p-8">
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                A bad credit business loan is designed for entrepreneurs whose personal or business credit scores 
-                fall below traditional lending standards. These loans provide access to capital when conventional 
-                banks might decline your application.
-              </p>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Alternative Approval</h4>
-                    <p className="text-gray-600 text-sm">Based on business performance, not just credit scores</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Faster Process</h4>
-                    <p className="text-gray-600 text-sm">Quick approval and funding, often within days</p>
-                  </div>
+<section className="py-16 bg-gray-50">
+  <div className="max-w-6xl mx-auto px-4">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl font-bold text-gray-900 mb-4">
+        What is a Bad Credit Business Loan?
+      </h2>
+    </div>
+
+    <div className="flex flex-col md:flex-row items-center gap-10">
+      {/* Texto y beneficios */}
+      <div className="md:w-1/2">
+        <Card className="border-0 shadow-lg">
+          <CardContent className="p-8">
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              A bad credit business loan is designed for entrepreneurs whose personal or business credit scores 
+              fall below traditional lending standards. These loans provide access to capital when conventional 
+              banks might decline your application.
+            </p>
+            <div className="grid md:grid-cols-1 gap-6">
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-gray-900">Alternative Approval</h4>
+                  <p className="text-gray-600 text-sm">
+                    Based on business performance, not just credit scores
+                  </p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-gray-900">Faster Process</h4>
+                  <p className="text-gray-600 text-sm">
+                    Quick approval and funding, often within days
+                  </p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Imagen visual */}
+      <div className="md:w-1/2">
+        <img
+          src="/images/pexels-ivan-samkov-4491912.jpg"
+          alt="Loan Explanation"
+          className="rounded-lg shadow-md w-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* How to Get a Business Loan */}
       <section className="py-16">
@@ -183,68 +225,85 @@ const Index = () => {
           </div>
         </div>
       </section>
+{/* Types of Business Loans */}
+<section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+  <div className="max-w-6xl mx-auto px-4">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl font-bold text-gray-900 mb-3">
+        Types of Business Loans Available
+      </h2>
+      <p className="text-gray-600 max-w-xl mx-auto">
+        Choose the right financing option for your business goals.
+      </p>
+    </div>
 
-      {/* Types of Business Loans */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Types of Business Loans Available
-            </h2>
-            <p className="text-gray-600">Choose the right financing option for your needs</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Clock className="h-5 w-5 text-blue-500" />
-                  <span>Short-Term Loans</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">Quick access to working capital with flexible repayment terms.</p>
-                <div className="text-sm text-gray-500">
-                  <div>• $5K - $500K funding</div>
-                  <div>• 3-18 month terms</div>
-                  <div>• Fast approval</div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <TrendingUp className="h-5 w-5 text-green-500" />
-                  <span>Revenue-Based</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">Repayments based on your monthly revenue performance.</p>
-                <div className="text-sm text-gray-500">
-                  <div>• $10K - $2M funding</div>
-                  <div>• Flexible payments</div>
-                  <div>• No fixed monthly</div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Shield className="h-5 w-5 text-purple-500" />
-                  <span>Asset-Based</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">Secured loans using business assets as collateral.</p>
-                <div className="text-sm text-gray-500">
-                  <div>• $25K - $5M funding</div>
-                  <div>• Lower rates</div>
-                  <div>• Longer terms</div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+    {/* Cards */}
+    <div className="grid md:grid-cols-3 gap-8">
+      {/* Short-Term Loans */}
+      <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+        <img
+          src="/images/loan-agreements.jpg"
+          alt="Short-Term Loan"
+          className="rounded-lg mb-4 w-full h-36 object-cover"
+        />
+        <div className="flex items-center justify-center bg-blue-100 w-14 h-14 rounded-full mb-4 mx-auto">
+          <Clock className="text-blue-600 w-6 h-6" />
         </div>
-      </section>
+        <h3 className="text-lg font-semibold text-gray-900 text-center mb-2">Short-Term Loans</h3>
+        <p className="text-sm text-gray-600 text-center mb-4">
+          Fast access to capital with short repayment periods.
+        </p>
+        <ul className="text-gray-500 text-sm space-y-1">
+          <li>• $5K - $500K funding</li>
+          <li>• 3-18 month terms</li>
+          <li>• Quick approval</li>
+        </ul>
+      </div>
+
+      {/* Revenue-Based Loans */}
+      <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+        <img
+          src="/images/loan-profit.jpg"
+          alt="Revenue-Based Loan"
+          className="rounded-lg mb-4 w-full h-36 object-cover"
+        />
+        <div className="flex items-center justify-center bg-green-100 w-14 h-14 rounded-full mb-4 mx-auto">
+          <TrendingUp className="text-green-600 w-6 h-6" />
+        </div>
+        <h3 className="text-lg font-semibold text-gray-900 text-center mb-2">Revenue-Based</h3>
+        <p className="text-sm text-gray-600 text-center mb-4">
+          Payments adapt to your business performance.
+        </p>
+        <ul className="text-gray-500 text-sm space-y-1">
+          <li>• $10K - $2M funding</li>
+          <li>• Scales with revenue</li>
+          <li>• No fixed monthly rate</li>
+        </ul>
+      </div>
+
+      {/* Asset-Based Loans */}
+      <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+        <img
+          src="/images/business-asset.jpg"
+          alt="Asset-Based Loan"
+          className="rounded-lg mb-4 w-full h-36 object-cover"
+        />
+        <div className="flex items-center justify-center bg-purple-100 w-14 h-14 rounded-full mb-4 mx-auto">
+          <Shield className="text-purple-600 w-6 h-6" />
+        </div>
+        <h3 className="text-lg font-semibold text-gray-900 text-center mb-2">Asset-Based</h3>
+        <p className="text-sm text-gray-600 text-center mb-4">
+          Use business assets to secure more capital.
+        </p>
+        <ul className="text-gray-500 text-sm space-y-1">
+          <li>• $25K - $5M funding</li>
+          <li>• Lower interest</li>
+          <li>• Long terms available</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Pros and Cons */}
       <section className="py-16">
