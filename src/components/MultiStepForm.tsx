@@ -205,7 +205,22 @@ const MultiStepForm = () => {
                   onChange={handleInputChange}
                   className="mt-1"
                 />
-                <div className="flex justify-end mt-4">
+                <p className="text-xs text-gray-500 mt-1">
+                  {step.key === "email"
+                    ? "Must be a valid email like example@domain.com."
+                    : step.key === "zipCode"
+                    ? "US ZIP code must be 5 digits (optionally 4 more)."
+                    : step.key === "phone"
+                    ? "US phone number, 10 digits only. No fake/test numbers."
+                    : step.key === "annualRevenue"
+                    ? "Enter your yearly revenue in USD. Use only numbers."
+                    : step.key === "firstName" || step.key === "lastName"
+                    ? "Only letters, spaces and hyphens allowed."
+                    : step.key === "businessName"
+                    ? "Enter the full name of your company."
+                    : "Please enter a valid value to proceed."}
+                </p>
+                <div className="flex justify-between mt-4">
                   <Button
                     className="bg-blue-600 hover:bg-blue-700 text-white font-medium"
                     onClick={handleNext}
