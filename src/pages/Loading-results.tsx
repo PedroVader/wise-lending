@@ -14,7 +14,7 @@ const LoadingResults = () => {
     }
 
     const timer = setTimeout(() => {
-      navigate("/results", { state: { fromForm: true } });
+      navigate("/thank-you", { state: { fromForm: true } });
     }, 2500);
 
     return () => clearTimeout(timer);

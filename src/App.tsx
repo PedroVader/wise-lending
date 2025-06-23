@@ -13,6 +13,7 @@ import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import TermsOfUse from "./pages/Terms";
 import PrivacyPolicy from "./pages/Privacy";
+import ThankYouPage from "./pages/Thank-you";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/" element={<Index />} />                {/* Apply ahora en raíz */}
           <Route path="/banks" element={<Banks />} />           {/* Página antigua ahora en /banks */}
           <Route path="/loading" element={<Loading />} />
+          <Route path="/thank-you" element={<ThankYouPage />} />
           <Route path="/loading-results" element={<LoadingResults />} />
           <Route path="/results" element={<Results />} />
           <Route path="*" element={<NotFound />} />
