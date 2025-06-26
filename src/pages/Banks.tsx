@@ -433,7 +433,6 @@ const Index = () => {
           Act now — this expert consultation is <span className="font-semibold text-blue-600">limited-time only</span>
         </p>
 
-        {/* CTA Button */}
        {/* CTA Button */}
       <div className="mt-6 flex justify-center">
         <button
