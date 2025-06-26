@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getLenders } from "@/lib/getLenders";
 import MultiStepForm from "@/components/MultiStepForm";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, CheckCircle, Clock, Users, DollarSign, FileText, TrendingUp, AlertTriangle, Star, Quote, Home } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Shield, CheckCircle, Clock, Users, DollarSign, FileText, TrendingUp, AlertTriangle, Star, Quote, Home, ArrowRight } from "lucide-react";
+
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -87,10 +88,14 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Formulario */}
-      <div className="w-full md:w-1/2 mt-10 md:mt-0 bg-white p-5 sm:p-6 rounded-xl shadow-lg">
-        <MultiStepForm />
-      </div>
+     {/* Formulario */}
+<div
+  id="consultation-form"
+  className="w-full md:w-1/2 mt-10 md:mt-0 bg-white p-5 sm:p-6 rounded-xl shadow-lg"
+>
+  <MultiStepForm />
+</div>
+
     </div>
   </div>
 </section>
@@ -136,8 +141,8 @@ const Index = () => {
         <CardContent className="p-6">
           <Quote className="h-8 w-8 text-blue-500 mb-4" />
           <p className="text-gray-600 mb-4">
-            "After being rejected by 3 banks, I found this platform and got approved within 24 hours. 
-            The $75K helped me expand my restaurant during a crucial time."
+            "After being rejected by 3 banks, I found this platform and got approved within 24 hours.
+            The $200K helped me acquire new construction equipment when I needed it most."
           </p>
           <div className="flex items-center space-x-1 mb-2">
             {[...Array(5)].map((_, i) => (
@@ -145,10 +150,10 @@ const Index = () => {
             ))}
           </div>
           <div className="flex items-center gap-3 mt-4">
-            <img src="/images/avatar1.jpg" alt="Maria Rodriguez" className="w-10 h-10 rounded-full object-cover" />
+            <img src="/images/jake-thompson.jpeg" alt="Maria Rodriguez" className="w-10 h-10 rounded-full object-cover" />
             <div>
-              <div className="font-semibold text-gray-900">Maria Rodriguez</div>
-              <div className="text-sm text-gray-500">Restaurant Owner, Miami</div>
+              <div className="font-semibold text-gray-900">Jake Thompson</div>
+              <div className="text-sm text-gray-500">Construction Company Owner, Dallas</div>
             </div>
           </div>
         </CardContent>
@@ -168,9 +173,9 @@ const Index = () => {
             ))}
           </div>
           <div className="flex items-center gap-3 mt-4">
-            <img src="/images/avatar2.jpg" alt="James Chen" className="w-10 h-10 rounded-full object-cover" />
+            <img src="/images/James-Anderson.jpeg" alt="James Anderson" className="w-10 h-10 rounded-full object-cover" />
             <div>
-              <div className="font-semibold text-gray-900">James Chen</div>
+              <div className="font-semibold text-gray-900">James Anderson</div>
               <div className="text-sm text-gray-500">Tech Startup, Austin</div>
             </div>
           </div>
@@ -191,7 +196,7 @@ const Index = () => {
             ))}
           </div>
           <div className="flex items-center gap-3 mt-4">
-            <img src="/images/avatar3.jpg" alt="Sarah Johnson" className="w-10 h-10 rounded-full object-cover" />
+            <img src="/images/Sarah-Johnson.jpeg" alt="Sarah Johnson" className="w-10 h-10 rounded-full object-cover" />
             <div>
               <div className="font-semibold text-gray-900">Sarah Johnson</div>
               <div className="text-sm text-gray-500">Manufacturing, Detroit</div>
@@ -265,7 +270,7 @@ const Index = () => {
     <div className="grid md:grid-cols-3 gap-8">
       {/* 5 Year Term Loan */}
       <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-        <img src="/images/.png" alt="5 Year Term Loan" className="rounded-lg mb-4 w-full h-36 object-cover" />
+        <img src="/images/long-term.jpg" alt="5 Year Term Loan" className="rounded-lg mb-4 w-full h-36 object-cover" />
         <div className="flex items-center justify-center bg-blue-100 w-14 h-14 rounded-full mb-4 mx-auto">
           <FileText className="text-blue-600 w-6 h-6" />
         </div>
@@ -280,7 +285,7 @@ const Index = () => {
 
       {/* 3-24 Month Bridge Loan */}
       <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-        <img src="/images/.jpg" alt="Bridge Loan" className="rounded-lg mb-4 w-full h-36 object-cover" />
+        <img src="/images/financial-support.jpg" alt="Bridge Loan" className="rounded-lg mb-4 w-full h-36 object-cover" />
         <div className="flex items-center justify-center bg-yellow-100 w-14 h-14 rounded-full mb-4 mx-auto">
           <AlertTriangle className="text-yellow-600 w-6 h-6" />
         </div>
@@ -295,7 +300,7 @@ const Index = () => {
 
       {/* Equipment Financing */}
       <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-        <img src="/images/.jpg" alt="Equipment Financing" className="rounded-lg mb-4 w-full h-36 object-cover" />
+        <img src="/images/Equipment-financing.jpg" alt="Equipment Financing" className="rounded-lg mb-4 w-full h-36 object-cover" />
         <div className="flex items-center justify-center bg-green-100 w-14 h-14 rounded-full mb-4 mx-auto">
           <DollarSign className="text-green-600 w-6 h-6" />
         </div>
@@ -310,7 +315,7 @@ const Index = () => {
 
       {/* PO & AR Financing */}
       <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-        <img src="/images/.jpg" alt="PO & AR Financing" className="rounded-lg mb-4 w-full h-36 object-cover" />
+        <img src="/images/business-invoice.jpg" alt="PO & AR Financing" className="rounded-lg mb-4 w-full h-36 object-cover" />
         <div className="flex items-center justify-center bg-red-100 w-14 h-14 rounded-full mb-4 mx-auto">
           <Users className="text-red-600 w-6 h-6" />
         </div>
@@ -325,7 +330,7 @@ const Index = () => {
 
       {/* Commercial Mortgages */}
       <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-        <img src="/images/.jpg" alt="Commercial Mortgages" className="rounded-lg mb-4 w-full h-36 object-cover" />
+        <img src="/images/business-property.jpg" alt="Commercial Mortgages" className="rounded-lg mb-4 w-full h-36 object-cover" />
         <div className="flex items-center justify-center bg-indigo-100 w-14 h-14 rounded-full mb-4 mx-auto">
           <Home className="text-indigo-600 w-6 h-6" />
         </div>
@@ -340,7 +345,7 @@ const Index = () => {
 
       {/* Existing: Short-Term Loans (optional) */}
       <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-        <img src="/images/.jpg" alt="Short-Term Loan" className="rounded-lg mb-4 w-full h-36 object-cover" />
+        <img src="/images/fastest-funding.jpg" alt="Short-Term Loan" className="rounded-lg mb-4 w-full h-36 object-cover" />
         <div className="flex items-center justify-center bg-blue-100 w-14 h-14 rounded-full mb-4 mx-auto">
           <Clock className="text-blue-600 w-6 h-6" />
         </div>
@@ -419,18 +424,34 @@ const Index = () => {
       </ul>
 
       <div className="mt-8 text-center border-t pt-6">
-  <p className="text-sm uppercase tracking-wide text-gray-500 mb-2">Consultation Value</p>
-  <p className="text-4xl font-extrabold text-green-600">$297</p>
-  <p className="mt-2 text-lg text-gray-800 font-medium">
-    <span className="text-blue-700 font-semibold">100% Free</span> for qualified businesses — <span className="italic text-gray-600">no hidden fees, no obligation.</span>
-  </p>
-  <p className="text-sm text-gray-500 mt-1">
-    Act now — this expert consultation is <span className="font-semibold text-blue-600">limited-time only</span>
-  </p>
-</div>
+        <p className="text-sm uppercase tracking-wide text-gray-500 mb-2">Consultation Value</p>
+        <p className="text-4xl font-extrabold text-green-600">$297</p>
+        <p className="mt-2 text-lg text-gray-800 font-medium">
+          <span className="text-blue-700 font-semibold">100% Free</span> for qualified businesses — <span className="italic text-gray-600">no hidden fees, no obligation.</span>
+        </p>
+        <p className="text-sm text-gray-500 mt-1">
+          Act now — this expert consultation is <span className="font-semibold text-blue-600">limited-time only</span>
+        </p>
+
+        {/* CTA Button */}
+       {/* CTA Button */}
+      <div className="mt-6 flex justify-center">
+        <button
+          className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-md flex items-center transition"
+          onClick={() => {
+            document
+              .getElementById("consultation-form")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          Apply Now <ArrowRight className="ml-2 w-4 h-4" />
+        </button>
+      </div>
+      </div>
     </div>
   </div>
 </section>
+
 
       <Footer />
     </div>

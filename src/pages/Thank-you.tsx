@@ -4,11 +4,28 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function ThankYouPage() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+    const [isVisible, setIsVisible] = useState(false);
+    const [clientName, setClientName] = useState("");
+  
+    useEffect(() => {
+      setIsVisible(true);
+      
+      // Get client name from localStorage
+      try {
+        const savedData = localStorage.getItem("loanApplicationData");
+        if (savedData) {
+          const formData = JSON.parse(savedData);
+          const firstName = formData.firstName || "";
+          const lastName = formData.lastName || "";
+          const fullName = `${firstName} ${lastName}`.trim();
+          if (fullName) {
+            setClientName(fullName);
+          }
+        }
+      } catch (error) {
+        console.error("Error reading form data:", error);
+      }
+    }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -33,37 +50,39 @@ export default function ThankYouPage() {
             <div className="w-16 h-16 mx-auto bg-green-600 rounded-full flex items-center justify-center mb-6">
               <CheckCircle className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold mb-4">Application Successfully Submitted</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-4">
+              {clientName ? `Thank you, ${clientName}!` : "Information Successfully Received!"}
+            </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Thank you for your application. Our team is now reviewing your
-              information and will contact you shortly to discuss your funding
-              options.
+              {clientName ? `Hi ${clientName.split(' ')[0]}, thanks` : "Thanks"} for trusting us with your information. We've received your 
+              details and will now work to connect you with lenders that best 
+              match your needs.
             </p>
           </div>
 
           {/* Línea de proceso */}
           <div className="mb-12 bg-card rounded-lg border border-border p-6 text-left">
-            <h2 className="text-xl font-semibold mb-6 text-card-foreground">What happens next:</h2>
+            <h2 className="text-xl font-semibold mb-6 text-card-foreground">What's next:</h2>
             <div className="space-y-6">
-              {[
+            {[
                 {
-                  icon: <FileCheck className="w-4 h-4 text-primary-foreground" />,
-                  title: "Application Review",
-                  desc: "Our underwriting team will review your application and business information within 2–4 hours.",
+                  icon: <FileCheck className="w-4 h-4 text-blue-600" />,
+                  title: "Initial Review",
+                  desc: "We'll review your information to identify which lenders might be interested in your profile (1-2 hours).",
                 },
                 {
-                  icon: <Phone className="w-4 h-4 text-primary-foreground" />,
-                  title: "Expert Consultation",
-                  desc: "A funding specialist will call you to discuss your options and answer any questions you may have.",
+                  icon: <Phone className="w-4 h-4 text-blue-600" />,
+                  title: "Casual Call",
+                  desc: "We'll give you a call to get to know you better and understand what type of funding you need. Just a relaxed conversation.",
                 },
                 {
-                  icon: <Clock className="w-4 h-4 text-primary-foreground" />,
-                  title: "Funding Decision",
-                  desc: "Receive your personalized funding proposal with terms and rates tailored to your business needs.",
+                  icon: <Clock className="w-4 h-4 text-blue-600" />,
+                  title: "Lender Connection",
+                  desc: "We'll introduce you to the most suitable lenders so you can speak with them directly about your options.",
                 },
               ].map((step, i) => (
                 <div key={i} className="flex items-start">
-                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                  <div className="w-8 h-8 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                     {step.icon}
                   </div>
                   <div>
