@@ -1,3 +1,8 @@
+# Bloquear acceso a la ruta de resultados
+User-agent: *
+Disallow: /results
+
+# Permitir rastreo completo del resto del sitio
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +15,5 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Ubicación del sitemap
+Sitemap: https://wiselending.io/sitemap.xml

@@ -64,8 +64,7 @@ export default function ThankYouPage() {
               {clientName
                 ? `Hi ${clientName.split(" ")[0]}, thanks`
                 : "Thanks"}{" "}
-              for trusting us with your information. We've received your details and will now work to connect you with lenders that best match your needs.
-            </p>
+            Wait for our call. We will study your case together to find the best financing options available for your needs            </p>
           </div>
 
           <div className="mb-12 bg-card rounded-lg border border-border p-6 text-left">
