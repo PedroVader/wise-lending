@@ -11,7 +11,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LenderCard from "@/components/LenderCard";
 
-const Index = () => {
+const Apply = () => {
   const navigate = useNavigate();
   const [lenders, setLenders] = useState([]);
 
@@ -457,5 +457,5 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Apply;
 

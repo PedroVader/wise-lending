@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";           
-import Banks from "./pages/Apply";          // Ahora contiene el contenido anterior de Index
 import Loading from "./pages/Loading";
 import Results from "./pages/Results";
 import NotFound from "./pages/NotFound";
@@ -14,6 +13,7 @@ import BlogPost from "@/pages/BlogPost";
 import TermsOfUse from "./pages/Terms";
 import PrivacyPolicy from "./pages/Privacy";
 import ThankYouPage from "./pages/Thank-you";
+import Apply from "./pages/Apply"; // Renamed from Index to Apply
 
 const queryClient = new QueryClient();
 
@@ -25,7 +25,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />                {/* Apply ahora en raíz */}
-          <Route path="/banks" element={<Banks />} />           {/* Página antigua ahora en /banks */}
+          <Route path="/apply" element={<Apply />} />           {/* Página antigua ahora en /banks */}
           <Route path="/loading" element={<Loading />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
           <Route path="/loading-results" element={<LoadingResults />} />
