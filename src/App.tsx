@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";           
-import Banks from "./pages/Banks";          // Ahora contiene el contenido anterior de Index
+import Banks from "./pages/Apply";          // Ahora contiene el contenido anterior de Index
 import Loading from "./pages/Loading";
 import Results from "./pages/Results";
 import NotFound from "./pages/NotFound";
