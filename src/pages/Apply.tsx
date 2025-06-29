@@ -141,8 +141,7 @@ const Apply = () => {
         <CardContent className="p-6">
           <Quote className="h-8 w-8 text-blue-500 mb-4" />
           <p className="text-gray-600 mb-4">
-            "After being rejected by 3 banks, I found this platform and got approved within 24 hours.
-            The $200K helped me acquire new construction equipment when I needed it most."
+            "Rejected by 3 banks, this platform approved me in 24h. The $200K came just in time for new construction equipment."
           </p>
           <div className="flex items-center space-x-1 mb-2">
             {[...Array(5)].map((_, i) => (
@@ -150,7 +149,7 @@ const Apply = () => {
             ))}
           </div>
           <div className="flex items-center gap-3 mt-4">
-            <img src="/images/jake-thompson.jpeg" alt="Maria Rodriguez" className="w-10 h-10 rounded-full object-cover" />
+            <img src="JakeThompson.jpeg" alt="Maria Rodriguez" className="w-10 h-10 rounded-full object-cover" />
             <div>
               <div className="font-semibold text-gray-900">Jake Thompson</div>
               <div className="text-sm text-gray-500">Construction Company Owner, Dallas</div>
@@ -173,7 +172,7 @@ const Apply = () => {
             ))}
           </div>
           <div className="flex items-center gap-3 mt-4">
-            <img src="/images/James-Anderson.jpeg" alt="James Anderson" className="w-10 h-10 rounded-full object-cover" />
+            <img src="/JamesAnderson.jpeg" alt="James Anderson" className="w-10 h-10 rounded-full object-cover" />
             <div>
               <div className="font-semibold text-gray-900">James Anderson</div>
               <div className="text-sm text-gray-500">Tech Startup, Austin</div>
@@ -196,7 +195,7 @@ const Apply = () => {
             ))}
           </div>
           <div className="flex items-center gap-3 mt-4">
-            <img src="/images/Sarah-Johnson.jpeg" alt="Sarah Johnson" className="w-10 h-10 rounded-full object-cover" />
+            <img src="/SarahJohnson.jpeg" alt="Sarah Johnson" className="w-10 h-10 rounded-full object-cover" />
             <div>
               <div className="font-semibold text-gray-900">Sarah Johnson</div>
               <div className="text-sm text-gray-500">Manufacturing, Detroit</div>
