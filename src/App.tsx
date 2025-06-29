@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";           
+import Index from "./pages/Index"; // Renamed from Apply to Index     
 import Loading from "./pages/Loading";
 import Results from "./pages/Results";
 import NotFound from "./pages/NotFound";
@@ -24,8 +24,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />                {/* Apply ahora en raíz */}
-          <Route path="/apply" element={<Apply />} />           {/* Página antigua ahora en /banks */}
+          <Route path="/" element={<Index />} />                
+          <Route path="/apply" element={<Apply />} />           
           <Route path="/loading" element={<Loading />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
           <Route path="/loading-results" element={<LoadingResults />} />
