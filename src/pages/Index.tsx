@@ -14,6 +14,7 @@ import LenderCard from "@/components/LenderCard";
 const Apply = () => {
   const navigate = useNavigate();
   const [lenders, setLenders] = useState([]);
+  
 
   useEffect(() => {
     getLenders().then(setLenders);
@@ -27,10 +28,14 @@ const Apply = () => {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <section
-  className="relative bg-cover bg-center bg-no-repeat text-white py-14 sm:py-16 md:py-20"
-  style={{ backgroundImage: "url('/images/small-business.jpg')" }}
->
+      <section className="relative text-white py-14 sm:py-16 md:py-20 overflow-hidden">
+      {/* Imagen de fondo con fetchpriority="high" */}
+      <img 
+        src="/images/small-business.jpg" 
+        alt="Small business background"
+        fetchPriority="high"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
   {/* Overlay con gradiente */}
   <div className="absolute inset-0 bg-gradient-to-r from-blue-900/60 to-blue-600/40 z-0" />
 
