@@ -304,7 +304,7 @@ const Apply = () => {
 
       {/* Equipment Financing */}
       <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-        <img src="/images/Equipment-financing.jpg" alt="Equipment Financing" className="rounded-lg mb-4 w-full h-36 object-cover" />
+        <img src="/images/Equipment-financing.webp" alt="Equipment Financing" className="rounded-lg mb-4 w-full h-36 object-cover" />
         <div className="flex items-center justify-center bg-green-100 w-14 h-14 rounded-full mb-4 mx-auto">
           <DollarSign className="text-green-600 w-6 h-6" />
         </div>
@@ -334,7 +334,7 @@ const Apply = () => {
 
       {/* Commercial Mortgages */}
       <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-        <img src="/images/business-property.jpg" alt="Commercial Mortgages" className="rounded-lg mb-4 w-full h-36 object-cover" />
+        <img src="/images/business-property.webp" alt="Commercial Mortgages" className="rounded-lg mb-4 w-full h-36 object-cover" />
         <div className="flex items-center justify-center bg-indigo-100 w-14 h-14 rounded-full mb-4 mx-auto">
           <Home className="text-indigo-600 w-6 h-6" />
         </div>
