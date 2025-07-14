@@ -51,7 +51,7 @@ const Apply = () => {
           Get the Business Funding You Deserve — Even With Bad Credit
         </h1>
         <p className="text-sm sm:text-base text-blue-100 mb-6">
-          Compare pre-qualified offers from top lenders with zero impact on your credit score.
+        We are not a broker. We are a local company that will guide you get the best terms for your business loan.
         </p>
 
         {/* Logos */}
@@ -218,7 +218,7 @@ const Apply = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why Choose Our Platform?
+              Why Choose Us?
             </h2>
             <p className="text-gray-600">Compare our benefits against traditional lending</p>
           </div>
