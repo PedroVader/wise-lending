@@ -64,7 +64,7 @@ export default function ThankYouPage() {
               {clientName
                 ? `Hi ${clientName.split(" ")[0]}, thanks`
                 : "Thanks"}{" "}
-            Wait for our call. We will study your case together to find the best financing options available for your needs            </p>
+              for information. Experts from GoQualifi will call you shortly</p>
           </div>
 
           <div className="mb-12 bg-card rounded-lg border border-border p-6 text-left">
